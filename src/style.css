@@ -33,3 +33,23 @@ li {
 .overview {
   margin-bottom: 20px;
 }
+.float-left {
+  float: left;
+}
+
+.weather-temp img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+.weather-temp strong {
+  font-size: 64px;
+  font-weight: 400;
+  color: #212121;
+  line-height: 1;
+}
+.weather-temp .units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}

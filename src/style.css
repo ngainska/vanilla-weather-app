@@ -75,3 +75,10 @@ li:first-letter {
 .song {
   margin-top: 15px;
 }
+
+#sun {
+  color: #878787;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
+}

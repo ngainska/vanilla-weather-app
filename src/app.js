@@ -1,6 +1,9 @@
 function formatDate(timestamp){
     let date = new Date(timestamp);
     let hours = date.getHours();
+    if (hours < 10) {
+    hours = `0${hours}`;
+  }
     let minutes = date.getMinutes();
     let days = [
  "Sunday",
@@ -14,6 +17,17 @@ function formatDate(timestamp){
     let day = days[date.getDay()];
 
     return `${day} ${hours}:${minutes} `;
+}
+
+function formatTime(timestamp){
+    let date = new Date(timestamp);
+    let hours = date.getHours();
+    if (hours < 10) {
+    hours = `0${hours}`;
+  }
+    let minutes = date.getMinutes();
+
+    return `${hours}:${minutes} `;
 }
 
 function displayTemp(response){
@@ -45,6 +59,11 @@ let high = document.querySelector("#high");
 high.innerHTML = Math.round(maxCelsius);
 let low = document.querySelector("#low");
 low.innerHTML = Math.round(minCelsius);
+let sunrise = document.querySelector("#sunrise");
+sunrise.innerHTML = formatTime(response.data.sys.sunrise * 1000);
+let sunset = document.querySelector("#sunset"); 
+sunset.innerHTML = formatTime(response.data.sys.sunset * 1000);
+
 }
 
 function search(city){

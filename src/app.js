@@ -83,6 +83,12 @@ function displayCelsius(event){
     fahrenheitLink.classList.remove("active");
     let mainTemp = document.querySelector("#main-temp");
     mainTemp.innerHTML= Math.round(celsiusTemp);
+
+    let high = document.querySelector("#high");
+    high.innerHTML = Math.round(maxCelsius);
+    let low = document.querySelector("#low");
+    low.innerHTML = Math.round(minCelsius);
+
 }
 
 

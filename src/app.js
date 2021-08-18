@@ -18,8 +18,11 @@ function formatDate(timestamp){
 
 function displayTemp(response){
     console.log(response.data)
+ 
+celsiusTemp = response.data.main.temp;
+
 let mainTemp = document.querySelector("#main-temp");
-mainTemp.innerHTML=Math.round(response.data.main.temp);
+mainTemp.innerHTML=Math.round(celsiusTemp);
 let mainCity = document.querySelector("#city");
 mainCity.innerHTML= response.data.name;
 let mainDescription = document.querySelector("#main-description");
@@ -51,7 +54,34 @@ function handleSubmit(event){
     search(cityInput.value);
 }
 
-search("Glasgow");
+
+function displayFahrenheit(event){
+    event.preventDefault();
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let fahrenheit = (celsiusTemp * 9/5) + 32;
+    let mainTemp = document.querySelector("#main-temp");
+    mainTemp.innerHTML=Math.round(fahrenheit);
+}
+
+function displayCelsius(event){
+    event.preventDefault();
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+    let mainTemp = document.querySelector("#main-temp");
+    mainTemp.innerHTML= Math.round(celsiusTemp);
+}
+
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsius);
+
+search("Glasgow");

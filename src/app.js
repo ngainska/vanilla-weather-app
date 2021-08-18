@@ -84,4 +84,21 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
+
+function getPosition(position) {
+  let apiKey = "b6a67f67579bcd300971f2f49b91d214";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+  axios.get(url).then(displayTemp);
+}
+
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(getPosition);
+}
+
+let locationButton = document.querySelector("#location");
+locationButton.addEventListener("click", getCurrentLocation);
+
 search("Glasgow");

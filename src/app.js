@@ -51,6 +51,7 @@ function handleSubmit(event){
     search(cityInput.value);
 }
 
+search("Glasgow");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

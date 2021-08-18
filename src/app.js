@@ -20,6 +20,8 @@ function displayTemp(response){
     console.log(response.data)
  
 celsiusTemp = response.data.main.temp;
+maxCelsius = response.data.main.temp_max;
+minCelsius = response.data.main.temp_min;
 
 let mainTemp = document.querySelector("#main-temp");
 mainTemp.innerHTML=Math.round(celsiusTemp);
@@ -39,6 +41,10 @@ let mainIcon = document.querySelector("#main-icon");
 let getIcon = response.data.weather[0].icon;
 mainIcon.setAttribute(`src`,`http://openweathermap.org/img/wn/${getIcon}@2x.png` );
 mainIcon.setAttribute(`alt`,response.data.weather[0].description);
+let high = document.querySelector("#high");
+high.innerHTML = Math.round(maxCelsius);
+let low = document.querySelector("#low");
+low.innerHTML = Math.round(minCelsius);
 }
 
 function search(city){
@@ -62,6 +68,13 @@ function displayFahrenheit(event){
     let fahrenheit = (celsiusTemp * 9/5) + 32;
     let mainTemp = document.querySelector("#main-temp");
     mainTemp.innerHTML=Math.round(fahrenheit);
+
+    let maxF = (maxCelsius * 9/5) + 32;
+    let high = document.querySelector("#high");
+    high.innerHTML = Math.round(maxF);
+    let minF = (minCelsius * 9/5) + 32;
+    let low = document.querySelector("#low");
+    low.innerHTML = Math.round(minF);
 }
 
 function displayCelsius(event){
@@ -74,6 +87,8 @@ function displayCelsius(event){
 
 
 let celsiusTemp = null;
+let maxCelsius = null;
+let minCelsius = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

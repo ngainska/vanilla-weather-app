@@ -71,3 +71,7 @@ li:first-letter {
 .weather-temp .active:hover {
   text-decoration: none;
 }
+
+.song {
+  margin-top: 15px;
+}

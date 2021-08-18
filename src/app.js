@@ -38,9 +38,19 @@ mainIcon.setAttribute(`src`,`http://openweathermap.org/img/wn/${getIcon}@2x.png`
 mainIcon.setAttribute(`alt`,response.data.weather[0].description);
 }
 
-
-let city = "Glasgow";
+function search(city){
 let apiKey = "b6a67f67579bcd300971f2f49b91d214";
 let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiURL).then(displayTemp);
+}
 
+
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInput = document.querySelector("#city-input");
+    search(cityInput.value);
+}
+
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);

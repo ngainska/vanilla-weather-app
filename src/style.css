@@ -37,7 +37,7 @@ li:first-letter {
   margin: 30px auto;
   border-radius: 15px;
   background-color: none;
-  color: #eaf5f5;
+  color: #878787;
 }
 .weather-app {
   padding: 35px;
@@ -95,4 +95,25 @@ li:first-letter {
   font-weight: 100;
   line-height: 19px;
   margin-top: 45px;
+}
+
+small {
+  color: #eaf5f5;
+}
+
+.forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+.forecast-day {
+  font-size: 16px;
+}
+.forecast-temp {
+  font-size: 14px;
+}
+.forecast-low {
+  opacity: 0.6;
+}
+#forecast-icon {
+  margin-left: -10px;
 }

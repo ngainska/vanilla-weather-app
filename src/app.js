@@ -5,6 +5,10 @@ function formatDate(timestamp){
     hours = `0${hours}`;
   }
     let minutes = date.getMinutes();
+    if (minutes < 10) {
+    minutes = `0${hminutes}`;
+  }
+    
     let days = [
  "Sunday",
  "Monday",
@@ -26,6 +30,9 @@ function formatTime(timestamp){
     hours = `0${hours}`;
   }
     let minutes = date.getMinutes();
+     if (minutes < 10) {
+    minutes = `0${hminutes}`;
+  }
 
     return `${hours}:${minutes} `;
 }

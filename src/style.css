@@ -44,6 +44,7 @@ li:first-letter {
   border: 1px solid cadetblue;
   border-radius: 15px;
   background-color: white;
+  box-shadow: 20px 20px 80px 60px cadetblue;
 }
 .overview {
   margin-bottom: 20px;

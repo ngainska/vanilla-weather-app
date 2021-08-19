@@ -208,3 +208,9 @@ let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
 
 search("Glasgow");
+
+
+//to do
+//change icon images
+//if daytime, light mode, if evening, dark mode
+//forecast unit change

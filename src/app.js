@@ -38,6 +38,32 @@ function formatTime(timestamp){
     return `${hours}:${minutes} `;
 }
 
+function displayForecast(){
+
+  let forecast = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class = "row">`;
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function(day) {
+forecastHTML = forecastHTML + `<div class = "col-2"> 
+                        <div class = "forecast-day">
+                            ${day}
+                        </div>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" width="70" id="forecast-icon"/> 
+                    <div class="forecast-temp">
+                        <span class="forecast-high">20</span> <span class="forecast-low">12</span>
+                    </div>
+                    
+                    </div>`;
+  })
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML= forecastHTML;
+}
+
+
+
+
 function displayTemp(response){
     console.log(response.data)
  
@@ -123,6 +149,7 @@ let celsiusTemp = null;
 let maxCelsius = null;
 let minCelsius = null;
 
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
@@ -149,5 +176,6 @@ function getCurrentLocation() {
 let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
 
+displayForecast();
 
 search("Glasgow");

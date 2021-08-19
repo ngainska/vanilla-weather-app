@@ -56,6 +56,7 @@ return days[day];
 
 
 function displayForecast(response){
+  console.log(response);
   let forecastData = response.data.daily;
 
   let forecast = document.querySelector("#forecast");
@@ -64,21 +65,28 @@ function displayForecast(response){
   forecastData.forEach(function(forecastDay, index) {
 if (index < 6){
 
+forecastMaxCelsius = `${forecastDay.temp.max}`;
+forecastMinCelsius = `${forecastDay.temp.min}`;
 forecastHTML = forecastHTML + `<div class = "col-2"> 
                         <div class = "forecast-day">
                             ${formatDay(forecastDay.dt)}
                         </div>
                     <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="70" id="forecast-icon"/> 
                     <div class="forecast-temp">
-                        <span class="forecast-high">${Math.round(forecastDay.temp.max)}°</span> <span class="forecast-low">${Math.round(forecastDay.temp.min)}°</span>
+                        <span class="forecast-high" id="forecast-high">${Math.round(forecastDay.temp.max)}</span>° <span class="forecast-low" id="forecast-low">${Math.round(forecastDay.temp.min)}</span>°
                     </div>
                     
                     </div>`;
+
 }
+
   })
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
+
+  
+
 }
 
 function getForecast(coordinates){
@@ -90,11 +98,12 @@ function getForecast(coordinates){
 
 
 function displayTemp(response){
-    console.log(response.data)
+    console.log(response.data);
  
 celsiusTemp = response.data.main.temp;
 maxCelsius = response.data.main.temp_max;
 minCelsius = response.data.main.temp_min;
+
 
 let mainTemp = document.querySelector("#main-temp");
 mainTemp.innerHTML=Math.round(celsiusTemp);
@@ -159,6 +168,15 @@ function displayFahrenheit(event){
     let minF = (minCelsius * 9/5) + 32;
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minF);
+
+    let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
+    let forecastHigh = document.querySelector("#forecast-high");
+    forecastHigh.innerHTML = Math.round(forecastMaxF);
+    
+    let forecastMinF = (forecastMinCelsius * 9/5) + 32;
+    let forecastLow = document.querySelector("#forecast-low");
+    forecastLow.innerHTML = Math.round(forecastMinF);
+
 }
 
 function displayCelsius(event){
@@ -173,13 +191,20 @@ function displayCelsius(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minCelsius);
 
+    let forecastHigh = document.querySelector("#forecast-high");
+    forecastHigh.innerHTML = Math.round(forecastMaxCelsius);
+    
+    let forecastLow = document.querySelector("#forecast-low");
+    forecastLow.innerHTML = Math.round(forecastMinCelsius);
+
 }
 
 
 let celsiusTemp = null;
 let maxCelsius = null;
 let minCelsius = null;
-
+forecastMaxCelsius = null;
+forecastMinCelsius = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

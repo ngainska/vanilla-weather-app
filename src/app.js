@@ -85,8 +85,36 @@ forecastHTML = forecastHTML + `<div class = "col-2">
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
 
-  
-
+console.log(response.data.current.weather[0].main);
+let song = document.querySelector("#songlink");
+if (response.data.current.weather[0].main === "Clear") {
+song.innerHTML= `🎵 "Mr. Blue Sky" - Electric Light Orchestra `;
+song.setAttribute(`href`,"https://youtu.be/woNqp6jchVI");
+}
+else if (response.data.current.weather[0].main === "Clouds"){
+song.innerHTML= `🎵 "Cloudy Day" - Tones and I `;
+song.setAttribute(`href`,"https://youtu.be/V91GRYjlR2I");
+}
+else if (response.data.current.weather[0].main === "Drizzle"){
+song.innerHTML= `🎵 "Singin in the Rain" - Mint Royale `;
+song.setAttribute(`href`,"https://youtu.be/fEkATMOl6WU");
+}
+else if (response.data.current.weather[0].main === "Rain"){
+song.innerHTML= `🎵 "Umbrella" - Rihanna `;
+song.setAttribute(`href`,"https://youtu.be/CvBfHwUxHIk");
+}
+else if (response.data.current.weather[0].main === "Snow"){
+song.innerHTML= `🎵 "Do You Want To Build A Snowman?" - From "Frozen" `;
+song.setAttribute(`href`,"https://youtu.be/TeQ_TTyLGMs");
+}
+else if (response.data.current.weather[0].main === "Thunderstorm"){
+song.innerHTML= `🎵 "Thunderstruck" = AC/DC `;
+song.setAttribute(`href`,"https://youtu.be/v2AC41dglnM");
+}
+else {
+song.innerHTML= `🎵 "Blame It On The Weatherman" = B*Witched `;
+song.setAttribute(`href`,"https://youtu.be/HTwiK8z2m_Y");
+}
 }
 
 function getForecast(coordinates){
@@ -131,6 +159,7 @@ let sunrise = document.querySelector("#sunrise");
 sunrise.innerHTML = formatTime(response.data.sys.sunrise * 1000);
 let sunset = document.querySelector("#sunset"); 
 sunset.innerHTML = formatTime(response.data.sys.sunset * 1000);
+
 
 getForecast(response.data.coord);
 
@@ -232,6 +261,7 @@ function getCurrentLocation() {
 let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
 
+
 search("Glasgow");
 
 
@@ -239,3 +269,4 @@ search("Glasgow");
 //change icon images
 //if daytime, light mode, if evening, dark mode
 //forecast unit change
+//change song depending on weather.main

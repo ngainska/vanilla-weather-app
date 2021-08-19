@@ -99,6 +99,10 @@ else if (response.data.current.weather[0].main === "Drizzle"){
 song.innerHTML= `🎵 "Singin in the Rain" - Mint Royale `;
 song.setAttribute(`href`,"https://youtu.be/fEkATMOl6WU");
 }
+else if (response.data.current.weather[0].main === "Thunderstorm"){
+song.innerHTML= `🎵 "Thunderstruck" - AC/DC `;
+song.setAttribute(`href`,"https://youtu.be/v2AC41dglnM");
+}
 else if (response.data.current.weather[0].main === "Rain"){
 song.innerHTML= `🎵 "Umbrella" - Rihanna `;
 song.setAttribute(`href`,"https://youtu.be/CvBfHwUxHIk");
@@ -107,12 +111,8 @@ else if (response.data.current.weather[0].main === "Snow"){
 song.innerHTML= `🎵 "Do You Want To Build A Snowman?" - From "Frozen" `;
 song.setAttribute(`href`,"https://youtu.be/TeQ_TTyLGMs");
 }
-else if (response.data.current.weather[0].main === "Thunderstorm"){
-song.innerHTML= `🎵 "Thunderstruck" = AC/DC `;
-song.setAttribute(`href`,"https://youtu.be/v2AC41dglnM");
-}
 else {
-song.innerHTML= `🎵 "Blame It On The Weatherman" = B*Witched `;
+song.innerHTML= `🎵 "Blame It On The Weatherman" - B*Witched `;
 song.setAttribute(`href`,"https://youtu.be/HTwiK8z2m_Y");
 }
 }

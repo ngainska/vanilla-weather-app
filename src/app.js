@@ -260,7 +260,7 @@ let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
 
 
-search("Boston");
+search("Glasgow");
 
 
 //to do

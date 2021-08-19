@@ -38,7 +38,8 @@ function formatTime(timestamp){
     return `${hours}:${minutes} `;
 }
 
-function displayForecast(){
+function displayForecast(response){
+  console.log(response.data.daily);
 
   let forecast = document.querySelector("#forecast");
 
@@ -61,7 +62,12 @@ forecastHTML = forecastHTML + `<div class = "col-2">
   forecast.innerHTML= forecastHTML;
 }
 
-
+function getForecast(coordinates){
+  let apiKey = "b6a67f67579bcd300971f2f49b91d214";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecast);
+}
 
 
 function displayTemp(response){
@@ -98,12 +104,18 @@ sunrise.innerHTML = formatTime(response.data.sys.sunrise * 1000);
 let sunset = document.querySelector("#sunset"); 
 sunset.innerHTML = formatTime(response.data.sys.sunset * 1000);
 
+getForecast(response.data.coord);
+
+
+
+
 }
 
 function search(city){
 let apiKey = "b6a67f67579bcd300971f2f49b91d214";
 let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiURL).then(displayTemp);
+
 }
 
 
@@ -175,7 +187,5 @@ function getCurrentLocation() {
 
 let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
-
-displayForecast();
 
 search("Glasgow");

@@ -1,6 +1,7 @@
 function formatDate(timestamp){
     let date = new Date(timestamp);
     let hours = date.getHours();
+
     if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -20,23 +21,34 @@ function formatDate(timestamp){
 ];
     let day = days[date.getDay()];
 
-    return `${day} ${hours}:${minutes} `;
+let timezone = date.getTimezoneOffset();
+console.log(timezone)
+
+    return `${day} ${hours}:${minutes}`;
+
+
 }
 
 
 function formatTime(timestamp){
     let date = new Date(timestamp);
     let hours = date.getHours();
+    //let timezone = date.getTimezoneOffset();
     if (hours < 10) {
     hours = `0${hours}`;
-  }
+  } 
+  
+
     let minutes = date.getMinutes();
      if (minutes < 10) {
     minutes = `0${minutes}`;
   }
 
-    return `${hours}:${minutes} `;
+    return `${hours}:${minutes}`;
+    
 }
+
+
 
 function formatDay(timestamp){
 let date = new Date(timestamp * 1000);
@@ -84,6 +96,15 @@ forecastHTML = forecastHTML + `<div class = "col-2">
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
+
+//let i = 0;
+//for (forecastData) {
+ // if (fahrenheitLink.classList === 'active')  {
+   // forecastData[i].forecastMaxCelsius = '(forecastMaxCelsius * 9/5) + 32';
+    //break;
+  //}
+  //i++;
+//};
 
 console.log(response.data.current.weather[0].main);
 let song = document.querySelector("#songlink");
@@ -145,6 +166,7 @@ let wind = document.querySelector("#wind");
 wind.innerHTML=Math.round(response.data.wind.speed);
 let date = document.querySelector("#date");
 date.innerHTML = formatDate(response.data.dt * 1000);
+
 let mainIcon = document.querySelector("#main-icon");
 let getIcon = response.data.weather[0].icon;
 mainIcon.setAttribute(`src`,`http://openweathermap.org/img/wn/${getIcon}@2x.png` );
@@ -196,13 +218,19 @@ function displayFahrenheit(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minF);
 
-    let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
-    let forecastHigh = document.querySelector("#forecast-high");
-    forecastHigh.innerHTML = Math.round(forecastMaxF);
+
+
+    //let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
+    //let forecastHigh = document.querySelector("#forecast-high");
+    //forecastHigh.innerHTML = Math.round(forecastMaxF);
     
-    let forecastMinF = (forecastMinCelsius * 9/5) + 32;
-    let forecastLow = document.querySelector("#forecast-low");
-    forecastLow.innerHTML = Math.round(forecastMinF);
+    //let forecastMinF = (forecastMinCelsius * 9/5) + 32;
+    //let forecastLow = document.querySelector("#forecast-low");
+   // forecastLow.innerHTML = Math.round(forecastMinF);
+
+ // let apiKey = "b6a67f67579bcd300971f2f49b91d214";
+  //let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  //axios.get(apiURL).then(displayForecast);
 
 }
 
@@ -220,9 +248,12 @@ function displayCelsius(event){
 
     let forecastHigh = document.querySelector("#forecast-high");
     forecastHigh.innerHTML = Math.round(forecastMaxCelsius);
+  
     
     let forecastLow = document.querySelector("#forecast-low");
     forecastLow.innerHTML = Math.round(forecastMinCelsius);
+
+    
 
 }
 

@@ -77,15 +77,15 @@ function displayForecast(response){
   forecastData.forEach(function(forecastDay, index) {
 if (index < 6){
 
-forecastMaxCelsius = `${forecastDay.temp.max}`;
-forecastMinCelsius = `${forecastDay.temp.min}`;
+forecastMaxCelsius = Math.round(forecastDay.temp.max);
+forecastMinCelsius = Math.round(forecastDay.temp.min);
 forecastHTML = forecastHTML + `<div class = "col-2"> 
                         <div class = "forecast-day">
                             ${formatDay(forecastDay.dt)}
                         </div>
                     <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="70" id="forecast-icon"/> 
                     <div class="forecast-temp">
-                        <span class="forecast-high" id="forecast-high">${Math.round(forecastDay.temp.max)}</span>° <span class="forecast-low" id="forecast-low">${Math.round(forecastDay.temp.min)}</span>°
+                        <span class="forecast-high" id="forecast-high">${forecastMaxCelsius}</span>° <span class="forecast-low" id="forecast-low">${forecastMinCelsius}</span>°
                     </div>
                     
                     </div>`;
@@ -220,13 +220,13 @@ function displayFahrenheit(event){
 
 
 
-    //let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
-    //let forecastHigh = document.querySelector("#forecast-high");
-    //forecastHigh.innerHTML = Math.round(forecastMaxF);
+    let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
+    let forecastHigh = document.querySelector("#forecast-high");
+    forecastHigh.innerHTML = Math.round(forecastMaxF);
     
-    //let forecastMinF = (forecastMinCelsius * 9/5) + 32;
-    //let forecastLow = document.querySelector("#forecast-low");
-   // forecastLow.innerHTML = Math.round(forecastMinF);
+    let forecastMinF = (forecastMinCelsius * 9/5) + 32;
+    let forecastLow = document.querySelector("#forecast-low");
+    forecastLow.innerHTML = Math.round(forecastMinF);
 
  // let apiKey = "b6a67f67579bcd300971f2f49b91d214";
   //let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
@@ -258,11 +258,11 @@ function displayCelsius(event){
 }
 
 
-let celsiusTemp = null;
-let maxCelsius = null;
-let minCelsius = null;
-forecastMaxCelsius = null;
-forecastMinCelsius = null;
+//let celsiusTemp = null;
+//let maxCelsius = null;
+//let minCelsius = null;
+//forecastMaxCelsius = null;
+//forecastMinCelsius = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

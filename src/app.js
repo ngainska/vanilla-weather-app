@@ -97,12 +97,14 @@ forecastHTML = forecastHTML + `<div class = "col-2">
 
 
 for (let i=0; i < forecastData.length; i++) {
-  let fmax = (i, forecastData[i].temp.max);
+  let fmax = forecastData[i].temp.max;
+  let fmin = forecastData[i].temp.min;
   fmax = Math.round(fmax* 9/5) + 32;
-  console.log(fmax)
-    let forecastHigh =  (i, document.querySelector("#forecast-high"));
-    forecastHigh.innerHTML = fmax;
-    console.log(forecastHigh.innerHTML)
+  fmin = Math.round(fmin* 9/5) + 32;
+  let forecastHigh =  document.querySelectorAll("#forecast-high")[i];
+  forecastHigh.innerHTML = fmax;
+  let forecastLow = document.querySelectorAll("#forecast-low")[i];
+  forecastLow.innerHTML = fmin;
 }
 
 console.log(response.data.current.weather[0].main);

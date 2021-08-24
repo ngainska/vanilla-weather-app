@@ -89,22 +89,21 @@ forecastHTML = forecastHTML + `<div class = "col-2">
                     </div>
                     
                     </div>`;
-
 }
-
   })
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
 
-//let i = 0;
-//for (forecastData) {
- // if (fahrenheitLink.classList === 'active')  {
-   // forecastData[i].forecastMaxCelsius = '(forecastMaxCelsius * 9/5) + 32';
-    //break;
-  //}
-  //i++;
-//};
+
+for (let i=0; i < forecastData.length; i++) {
+  let fmax = (i, forecastData[i].temp.max);
+  fmax = Math.round(fmax* 9/5) + 32;
+  console.log(fmax)
+    let forecastHigh =  (i, document.querySelector("#forecast-high"));
+    forecastHigh.innerHTML = fmax;
+    console.log(forecastHigh.innerHTML)
+}
 
 console.log(response.data.current.weather[0].main);
 let song = document.querySelector("#songlink");
@@ -175,10 +174,6 @@ let high = document.querySelector("#high");
 high.innerHTML = Math.round(maxCelsius);
 let low = document.querySelector("#low");
 low.innerHTML = Math.round(minCelsius);
-let sunrise = document.querySelector("#sunrise");
-sunrise.innerHTML = formatTime(response.data.sys.sunrise * 1000);
-let sunset = document.querySelector("#sunset"); 
-sunset.innerHTML = formatTime(response.data.sys.sunset * 1000);
 
 
 getForecast(response.data.coord);
@@ -220,13 +215,13 @@ function displayFahrenheit(event){
 
 
 
-    let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
-    let forecastHigh = document.querySelector("#forecast-high");
-    forecastHigh.innerHTML = Math.round(forecastMaxF);
+    //let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
+    //let forecastHigh = document.querySelector("#forecast-high");
+    //forecastHigh.innerHTML = Math.round(forecastMaxF);
     
-    let forecastMinF = (forecastMinCelsius * 9/5) + 32;
-    let forecastLow = document.querySelector("#forecast-low");
-    forecastLow.innerHTML = Math.round(forecastMinF);
+  //let forecastMinF = (forecastMinCelsius * 9/5) + 32;
+    //let forecastLow = document.querySelector("#forecast-low");
+    //forecastLow.innerHTML = Math.round(forecastMinF);
 
  // let apiKey = "b6a67f67579bcd300971f2f49b91d214";
   //let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
@@ -246,12 +241,12 @@ function displayCelsius(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minCelsius);
 
-    let forecastHigh = document.querySelector("#forecast-high");
-    forecastHigh.innerHTML = Math.round(forecastMaxCelsius);
+    //let forecastHigh = document.querySelector("#forecast-high");
+    //forecastHigh.innerHTML = Math.round(forecastMaxCelsius);
   
     
-    let forecastLow = document.querySelector("#forecast-low");
-    forecastLow.innerHTML = Math.round(forecastMinCelsius);
+    //let forecastLow = document.querySelector("#forecast-low");
+    //forecastLow.innerHTML = Math.round(forecastMinCelsius);
 
     
 

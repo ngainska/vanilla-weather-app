@@ -95,21 +95,18 @@ forecastHTML = forecastHTML + `<div class = "col-2">
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
 
- //let element = document.querySelector("#fahrenheit");
-  //if (element.classList.contains("active")) {
-    for (let i=0; i < 6; i++) {
-  let fmax = forecastData[i].temp.max;
-  let fmin = forecastData[i].temp.min;
-  fmax = Math.round(fmax* 9/5) + 32;
-  fmin = Math.round(fmin* 9/5) + 32;
+ 
+  for (let i=0; i < 6; i++) {
+  cmax = Math.round(forecastData[i].temp.max);
+  cmin = Math.round(forecastData[i].temp.min);
+  //fmax = Math.round(fmax* 9/5) + 32;
+  //fmin = Math.round(fmin* 9/5) + 32;
   let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-  forecastHigh.innerHTML = fmax;
+  forecastHigh.innerHTML = cmax;
   let forecastLow = document.querySelectorAll(".forecast-low")[i];
-  forecastLow.innerHTML = fmin;
+  forecastLow.innerHTML = cmin;
+
 }
-  //} 
-
-
 
 }
 
@@ -117,7 +114,9 @@ function getForecast(coordinates){
   let apiKey = "b6a67f67579bcd300971f2f49b91d214";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiURL);
+ 
   axios.get(apiURL).then(displayForecast);
+  
 }
 
 
@@ -237,7 +236,21 @@ function displayFahrenheit(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minF);
 
-    displayTemp();
+    //let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
+    //let forecastHigh = document.querySelector(".forecast-high");
+    //forecastHigh.innerHTML = Math.round(forecastMaxF);
+
+    fmax = Math.round(cmax * 9/5) + 32;    
+    fmin = Math.round(cmin * 9/5) + 32;
+  //let fmax = forecastData[i].temp.max;
+  //let fmin = forecastData[i].temp.min;
+  //fmax = Math.round(fmax* 9/5) + 32;
+  //fmin = Math.round(fmin* 9/5) + 32;
+  //let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
+  //forecastHigh.innerHTML = fmax;
+  //let forecastLow = document.querySelectorAll(".forecast-low")[i];
+  //forecastLow.innerHTML = fmin;
+
 }
 
 function displayCelsius(event){

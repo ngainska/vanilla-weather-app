@@ -95,19 +95,19 @@ forecastHTML = forecastHTML + `<div class = "col-2">
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
 
- 
+ if ((fahrenheitLink.classList.value)==="active") {
   for (let i=0; i < 6; i++) {
   cmax = Math.round(forecastData[i].temp.max);
   cmin = Math.round(forecastData[i].temp.min);
-  //fmax = Math.round(fmax* 9/5) + 32;
-  //fmin = Math.round(fmin* 9/5) + 32;
+  fmax = Math.round(cmax* 9/5) + 32;
+  fmin = Math.round(cmin* 9/5) + 32;
   let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-  forecastHigh.innerHTML = cmax;
+  forecastHigh.innerHTML = fmax;
   let forecastLow = document.querySelectorAll(".forecast-low")[i];
-  forecastLow.innerHTML = cmin;
+  forecastLow.innerHTML = fmin;
 
 }
-
+ }
 }
 
 function getForecast(coordinates){
@@ -220,6 +220,8 @@ function getCurrentLocation() {
 let locationButton = document.querySelector("#location");
 locationButton.addEventListener("click", getCurrentLocation);
 
+
+
 function displayFahrenheit(event){
     event.preventDefault();
     celsiusLink.classList.remove("active");
@@ -240,12 +242,12 @@ function displayFahrenheit(event){
     //let forecastHigh = document.querySelector(".forecast-high");
     //forecastHigh.innerHTML = Math.round(forecastMaxF);
 
-    fmax = Math.round(cmax * 9/5) + 32;    
-    let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-    forecastHigh.innerHTML = fmax;
-    fmin = Math.round(cmin * 9/5) + 32;
-    let forecastLow = document.querySelectorAll(".forecast-low")[i];
-    forecastLow.innerHTML = fmin;
+    //fmax = Math.round(cmax * 9/5) + 32;    
+    //let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
+    //forecastHigh.innerHTML = fmax;
+   // fmin = Math.round(cmin * 9/5) + 32;
+    //let forecastLow = document.querySelectorAll(".forecast-low")[i];
+    //forecastLow.innerHTML = fmin;
   //let fmax = forecastData[i].temp.max;
   //let fmin = forecastData[i].temp.min;
   //fmax = Math.round(fmax* 9/5) + 32;

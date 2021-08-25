@@ -241,15 +241,17 @@ function displayFahrenheit(event){
     //forecastHigh.innerHTML = Math.round(forecastMaxF);
 
     fmax = Math.round(cmax * 9/5) + 32;    
+    let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
+    forecastHigh.innerHTML = fmax;
     fmin = Math.round(cmin * 9/5) + 32;
+    let forecastLow = document.querySelectorAll(".forecast-low")[i];
+    forecastLow.innerHTML = fmin;
   //let fmax = forecastData[i].temp.max;
   //let fmin = forecastData[i].temp.min;
   //fmax = Math.round(fmax* 9/5) + 32;
   //fmin = Math.round(fmin* 9/5) + 32;
-  //let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-  //forecastHigh.innerHTML = fmax;
-  //let forecastLow = document.querySelectorAll(".forecast-low")[i];
-  //forecastLow.innerHTML = fmin;
+ 
+  
 
 }
 

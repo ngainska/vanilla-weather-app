@@ -85,7 +85,7 @@ forecastHTML = forecastHTML + `<div class = "col-2">
                         </div>
                     <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="70" id="forecast-icon"/> 
                     <div class="forecast-temp">
-                        <span class="forecast-high" id="forecast-high">${forecastMaxCelsius}</span>° <span class="forecast-low" id="forecast-low">${forecastMinCelsius}</span>°
+                        <span class="forecast-high">${forecastMaxCelsius}</span>° <span class="forecast-low">${forecastMinCelsius}</span>°
                     </div>
                     
                     </div>`;
@@ -96,14 +96,14 @@ forecastHTML = forecastHTML + `<div class = "col-2">
   forecast.innerHTML= forecastHTML;
 
 
-for (let i=0; i < forecastData.length; i++) {
+for (let i=0; i < 6; i++) {
   let fmax = forecastData[i].temp.max;
   let fmin = forecastData[i].temp.min;
   fmax = Math.round(fmax* 9/5) + 32;
   fmin = Math.round(fmin* 9/5) + 32;
-  let forecastHigh =  document.querySelectorAll("#forecast-high")[i];
+  let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
   forecastHigh.innerHTML = fmax;
-  let forecastLow = document.querySelectorAll("#forecast-low")[i];
+  let forecastLow = document.querySelectorAll(".forecast-low")[i];
   forecastLow.innerHTML = fmin;
 }
 

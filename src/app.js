@@ -15,7 +15,7 @@ function formatDate(timestamp){
 
     return `${day} ${hours}:${minutes}`;
 }
-
+//fine
 
 function formatTime(timestamp){
     let date = new Date(timestamp);
@@ -33,7 +33,7 @@ function formatTime(timestamp){
     return `${hours}:${minutes}`;
     
 }
-
+//fine
 
 
 function formatDay(timestamp){
@@ -42,11 +42,11 @@ let day = date.getDay();
 let days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 return days[day]; 
 }
-
+let forecastData = [];
 
 function displayForecast(response){
   console.log(response);
-  let forecastData = response.data.daily;
+  forecastData = response.data.daily;
 
   let forecast = document.querySelector("#forecast");
 
@@ -67,24 +67,11 @@ forecastHTML = forecastHTML + `<div class = "col-2">
                     
                     </div>`;
 }
-  })
+  });
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML= forecastHTML;
 
- if ((fahrenheitLink.classList.value)==="active") {
-  for (let i=0; i < 6; i++) {
-  cmax = Math.round(forecastData[i].temp.max);
-  cmin = Math.round(forecastData[i].temp.min);
-  fmax = Math.round(cmax* 9/5) + 32;
-  fmin = Math.round(cmin* 9/5) + 32;
-  let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-  forecastHigh.innerHTML = fmax;
-  let forecastLow = document.querySelectorAll(".forecast-low")[i];
-  forecastLow.innerHTML = fmin;
-
-}
- }
 }
 
 function getForecast(coordinates){
@@ -215,23 +202,17 @@ function displayFahrenheit(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minF);
 
-    //let forecastMaxF = (forecastMaxCelsius * 9/5) + 32;
-    //let forecastHigh = document.querySelector(".forecast-high");
-    //forecastHigh.innerHTML = Math.round(forecastMaxF);
-
-    //fmax = Math.round(cmax * 9/5) + 32;    
-    //let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
-    //forecastHigh.innerHTML = fmax;
-   // fmin = Math.round(cmin * 9/5) + 32;
-    //let forecastLow = document.querySelectorAll(".forecast-low")[i];
-    //forecastLow.innerHTML = fmin;
-  //let fmax = forecastData[i].temp.max;
-  //let fmin = forecastData[i].temp.min;
-  //fmax = Math.round(fmax* 9/5) + 32;
-  //fmin = Math.round(fmin* 9/5) + 32;
- 
-  
-
+   
+  for (let i=0; i < 6; i++) {
+  cmax = Math.round(forecastData[i].temp.max);
+  cmin = Math.round(forecastData[i].temp.min);
+  fmax = Math.round(cmax* 9/5) + 32;
+  fmin = Math.round(cmin* 9/5) + 32;
+  let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
+  forecastHigh.innerHTML = fmax;
+  let forecastLow = document.querySelectorAll(".forecast-low")[i];
+  forecastLow.innerHTML = fmin;
+}
 }
 
 function displayCelsius(event){
@@ -246,6 +227,14 @@ function displayCelsius(event){
     let low = document.querySelector("#low");
     low.innerHTML = Math.round(minCelsius);  
 
+    for (let i=0; i < 6; i++) {
+  cmax = Math.round(forecastData[i].temp.max);
+  cmin = Math.round(forecastData[i].temp.min);
+  let forecastHigh =  document.querySelectorAll(".forecast-high")[i];
+  forecastHigh.innerHTML = cmax;
+  let forecastLow = document.querySelectorAll(".forecast-low")[i];
+  forecastLow.innerHTML = cmin;
+}
 }
 
 

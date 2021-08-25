@@ -10,30 +10,16 @@ function formatDate(timestamp){
     minutes = `0${minutes}`;
   }
     
-    let days = [
- "Sunday",
- "Monday",
-  "Tuesday",
- "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+    let days = ["Sunday","Monday", "Tuesday","Wednesday", "Thursday", "Friday","Saturday"];
     let day = days[date.getDay()];
 
-let timezone = date.getTimezoneOffset();
-console.log(timezone)
-
     return `${day} ${hours}:${minutes}`;
-
-
 }
 
 
 function formatTime(timestamp){
     let date = new Date(timestamp);
     let hours = date.getHours();
-    //let timezone = date.getTimezoneOffset();
     if (hours < 10) {
     hours = `0${hours}`;
   } 
@@ -53,18 +39,9 @@ function formatTime(timestamp){
 function formatDay(timestamp){
 let date = new Date(timestamp * 1000);
 let day = date.getDay();
-let days = [
- "Sun",
- "Mon",
-  "Tue",
- "Wed",
-  "Thur",
-  "Fri",
-  "Sat"
-];
+let days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 return days[day]; 
 }
-
 
 
 function displayForecast(response){

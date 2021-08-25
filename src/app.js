@@ -15,7 +15,6 @@ function formatDate(timestamp){
 
     return `${day} ${hours}:${minutes}`;
 }
-//fine
 
 function formatTime(timestamp){
     let date = new Date(timestamp);
@@ -33,8 +32,6 @@ function formatTime(timestamp){
     return `${hours}:${minutes}`;
     
 }
-//fine
-
 
 function formatDay(timestamp){
 let date = new Date(timestamp * 1000);
@@ -237,7 +234,6 @@ function displayCelsius(event){
 }
 }
 
-
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
 
@@ -247,9 +243,3 @@ celsiusLink.addEventListener("click", displayCelsius);
 
 search("Glasgow");
 
-
-//to do
-//change icon images
-//if daytime, light mode, if evening, dark mode
-//forecast unit change
-//change song depending on weather.main
